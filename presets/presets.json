@@ -1,0 +1,91 @@
+{
+  "presets": [
+    {
+      "name": "FODO Cell",
+      "description": "Classic alternating-gradient cell: QF – D – QD – D. Adjust K1 and L to change tune.",
+      "mode": "ring",
+      "beta0": 2.0,
+      "alpha0": 0.0,
+      "emittance": 1e-6,
+      "elements": [
+        {"etype": "QUAD_F",  "label": "QF",  "params": {"L": 0.5, "K1": 1.2}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",   "label": "D1",  "params": {"L": 1.0},            "thin": false, "annotation": ""},
+        {"etype": "QUAD_D",  "label": "QD",  "params": {"L": 0.5, "K1": 1.2}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",   "label": "D2",  "params": {"L": 1.0},            "thin": false, "annotation": ""}
+      ]
+    },
+    {
+      "name": "Chicane (4-dipole)",
+      "description": "Four rectangular bends alternating sign. Used for bunch compression and path length control.",
+      "mode": "linac",
+      "beta0": 5.0,
+      "alpha0": 0.0,
+      "emittance": 1e-6,
+      "elements": [
+        {"etype": "DIPOLE_RECT", "label": "B1", "params": {"L": 0.5, "theta":  0.1}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",       "label": "D1", "params": {"L": 1.0},                "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_RECT", "label": "B2", "params": {"L": 0.5, "theta": -0.1}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",       "label": "D2", "params": {"L": 0.5},                "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_RECT", "label": "B3", "params": {"L": 0.5, "theta": -0.1}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",       "label": "D3", "params": {"L": 1.0},                "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_RECT", "label": "B4", "params": {"L": 0.5, "theta":  0.1}, "thin": false, "annotation": ""}
+      ]
+    },
+    {
+      "name": "Dogleg",
+      "description": "Two sector dipoles bending the same way with a drift in between. Produces dispersion at exit.",
+      "mode": "linac",
+      "beta0": 5.0,
+      "alpha0": 0.0,
+      "emittance": 1e-6,
+      "elements": [
+        {"etype": "DIPOLE_SECTOR", "label": "B1", "params": {"L": 1.0, "theta": 0.15, "e1": 0.0, "e2": 0.0}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D1", "params": {"L": 2.0},                                        "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_SECTOR", "label": "B2", "params": {"L": 1.0, "theta": 0.15, "e1": 0.0, "e2": 0.0}, "thin": false, "annotation": ""}
+      ]
+    },
+    {
+      "name": "Final Focus Triplet",
+      "description": "QF – QD – QF triplet for strong focusing. Canonical final focus structure.",
+      "mode": "linac",
+      "beta0": 10.0,
+      "alpha0": 0.0,
+      "emittance": 1e-6,
+      "elements": [
+        {"etype": "DRIFT",  "label": "D0",  "params": {"L": 2.0},             "thin": false, "annotation": ""},
+        {"etype": "QUAD_F", "label": "QF1", "params": {"L": 0.5, "K1": 2.5}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",  "label": "D1",  "params": {"L": 0.5},             "thin": false, "annotation": ""},
+        {"etype": "QUAD_D", "label": "QD1", "params": {"L": 0.5, "K1": 5.0}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",  "label": "D2",  "params": {"L": 0.5},             "thin": false, "annotation": ""},
+        {"etype": "QUAD_F", "label": "QF2", "params": {"L": 0.5, "K1": 2.5}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",  "label": "D3",  "params": {"L": 5.0},             "thin": false, "annotation": "IP"}
+      ]
+    },
+    {
+      "name": "Simple Ring (4 FODO + bends)",
+      "description": "Four FODO cells with sector bends to close the orbit. A minimal ring example.",
+      "mode": "ring",
+      "beta0": 3.0,
+      "alpha0": 0.0,
+      "emittance": 1e-6,
+      "elements": [
+        {"etype": "QUAD_F",        "label": "QF1", "params": {"L": 0.3, "K1": 1.5},                          "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D1",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_SECTOR", "label": "B1",  "params": {"L": 1.0, "theta": 0.785, "e1": 0.0, "e2": 0.0}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D2",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""},
+        {"etype": "QUAD_D",        "label": "QD1", "params": {"L": 0.3, "K1": 1.5},                          "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D3",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_SECTOR", "label": "B2",  "params": {"L": 1.0, "theta": 0.785, "e1": 0.0, "e2": 0.0}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D4",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""},
+        {"etype": "QUAD_F",        "label": "QF2", "params": {"L": 0.3, "K1": 1.5},                          "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D5",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_SECTOR", "label": "B3",  "params": {"L": 1.0, "theta": 0.785, "e1": 0.0, "e2": 0.0}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D6",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""},
+        {"etype": "QUAD_D",        "label": "QD2", "params": {"L": 0.3, "K1": 1.5},                          "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D7",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""},
+        {"etype": "DIPOLE_SECTOR", "label": "B4",  "params": {"L": 1.0, "theta": 0.785, "e1": 0.0, "e2": 0.0}, "thin": false, "annotation": ""},
+        {"etype": "DRIFT",         "label": "D8",  "params": {"L": 0.5},                                      "thin": false, "annotation": ""}
+      ]
+    }
+  ]
+}
